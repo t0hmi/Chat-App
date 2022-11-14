@@ -1,0 +1,24 @@
+<form class="user-login" [formGroup]="formGroup" (submit)="loginUser()">
+    <!-- <img class="user-login__logo" src="/assets/devchallenges.svg"> -->
+    <h3 class="user-login__title">Login</h3>
+    <p class="user-login__description">Master web development by making real-life projects. There are multiple paths for you to choose</p>
+    <div class="input__wrapper">
+        <img src="/assets/mail.svg">
+        <input type="text" class="user-login__email" placeholder="Email" [formControl]="email" [ngClass]="{'hasError': email.touched && !email.valid }">
+    </div>
+    <div class="input__wrapper">
+        <img src="/assets/password.svg">
+        <input type="password" class="user-login__password" placeholder="Password" [formControl]="password" [ngClass]="{'hasError': password.touched && !password.valid }">
+    </div>
+    <input type="submit" class="user-login__submit" value="Login">
+    <p class="user-login__or">or continue with theses social profile</p>
+    <div class="user-login__social">
+        <div class="img__wrapper">
+            <img src="/assets/Google.svg" >
+        </div>
+        <a class="img__wrapper">
+            <img src="/assets/Gihub.svg" >
+        </a>
+    </div>
+    <div class="user-login__already">Not a member? <a routerLink="/register">Register</a> </div>
+</form>

@@ -1,0 +1,25 @@
+<ng-container *ngIf="{
+    isLogged : isLogged$ | async,
+    user : user$ | async,
+    activeChannel : activeChannel$ | async,
+    userMessages : messages$ | async
+} as data">
+<app-chat-sidebar [email]="data.user?.email" [channels]="channels$ | async" [users]="users" [hubConnection]="chatHub" [activeChannel]="data.activeChannel"></app-chat-sidebar>
+<div class="chat">
+    <div class="chat__header">
+        <h3>{{data.activeChannel?.name}}</h3>
+    </div>
+    <div class="chat__content">
+        <div class="chat__messages" #messages [scrollTop]="messages.scrollHeight">
+                <app-chat-message *ngFor="let m of data.userMessages" [username]="m.email" [message]="m.message" [date]="m.creationDate" ></app-chat-message>
+                <app-chat-message *ngFor="let nm of newMessages" [username]="nm.username" [message]="nm.message" [date]="nm.now" ></app-chat-message>
+        </div>
+        <div class="chat__input">
+            <textarea type="text" rows="1" placeholder="Type a message here" #message></textarea>
+            <div class="send" (click)="sendMessage(data.activeChannel?.name, data.user?.email, message.value, data.activeChannel?.id)">
+                <img src="/assets/send.svg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+</ng-container>

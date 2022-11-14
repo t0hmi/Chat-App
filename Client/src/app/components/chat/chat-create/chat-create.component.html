@@ -1,0 +1,7 @@
+<form class="modal" *ngIf="isOpen" [formGroup]="formGroup" (submit)="createChannel()">
+    <h4 class="modal__title">NEW CHANNEL</h4>
+    <input type="text" placeholder="Channel name" class="modal__channel" [formControl]="name" [ngClass]="{'hasError': name.touched && !name.valid }">
+    <textarea placeholder="Channel description" cols="30" rows="10" type="text" class="modal__description" [formControl]="description" [ngClass]="{'hasError': description.touched && !description.valid }"></textarea>
+    <input type="submit" value="Save" class="modal__submit">
+</form>
+<div class="overlay" #overlay *ngIf="isOpen"></div>

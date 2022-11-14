@@ -1,0 +1,57 @@
+<div class="sidebar" [ngClass]="{'sidebar--open': isSidebarMobileOpen}" >
+    <div class="sidebar-mobile__close" [ngClass]="{'sidebar-mobile__close--open' : isSidebarMobileOpen}" (click)="toggleSidebar()">
+        <img *ngIf="isSidebarMobileOpen" src="/assets/close.svg" alt="">
+        <img *ngIf="!isSidebarMobileOpen" src="/assets/menu.svg" alt="">
+    </div>
+    <ng-container *ngIf="isListOpen">
+
+    <div class="sidebar__header">
+       <span>Channels</span> 
+
+        <div class="header__img" (click)="openModal()">
+            <img src="/assets/add.svg" alt="">
+        </div>
+    </div>
+    <div class="sidebar__search-bar">
+        <input type="text" placeholder="Search">
+        <img src="/assets/search.svg" alt="">
+    </div>
+    <div class="sidebar__channels">
+        <div class="channel" *ngFor="let channel of channels" (click)="setActiveChannel(channel.name)">
+            <div class="key">
+             <span>{{channel.key}}</span>
+            </div>
+            <span class="name" >{{channel.name}}</span>
+        </div>
+    </div>
+
+
+</ng-container >
+<ng-container *ngIf="!isListOpen">
+    <ng-container >
+        <div class="sidebar__header sidebar__header--active" (click)="openList()">
+            <img src="/assets/back.svg" alt="">
+            <span>All Channels</span> 
+         </div>
+         <div class="sidebar__content">
+            <span>{{activeChannel?.name}}</span>
+            <p>{{activeChannel?.description}}</p>
+         </div>
+         <div class="sidebar__members">
+            <h4>MEMBERS</h4>
+            <div class="member" *ngFor="let connectedUser of users"><p>{{connectedUser}}</p>  <span *ngIf="connectedUser === email">(you)</span> </div>
+         </div>
+    </ng-container>
+</ng-container>
+
+<div class="sidebar__profile">
+    <div class="img">{{firstLetter}}</div>
+    <span>{{email}}</span>
+    <img src="/assets/expand.svg" (click)="openMenu()" #expandButton>
+    <div class="menu" #menu [ngClass]="{'menu--visible' : isMenuOpen}">
+        <div class="menu__item"><img src="/assets/account.svg" alt=""> My profile</div>
+        <div class="menu__item menu__item--logout" (click)="logout()"><img src="/assets/logout.svg" alt=""> Logout</div>
+    </div>
+</div>
+</div>
+<app-chat-create [isOpen]="isModalOpen" (closeModal)="closeModal()"></app-chat-create>

@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
+@import './app/scss/variables';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Noto Sans', sans-serif;
+    overflow: hidden;
+}
+
+input {
+    border: none;
+
+    &:hover {
+        outline: none;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+
+textarea {
+    outline: none;
+    resize: none;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: $link-color;
+}

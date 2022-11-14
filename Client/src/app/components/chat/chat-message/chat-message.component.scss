@@ -1,0 +1,52 @@
+@import '../../../scss/variables';
+
+.message {
+    color: $secondary-color;
+    padding-left: 70px;
+    position: relative;
+
+    
+    .img {
+        position: absolute;
+        left: 0px;
+        width: 42px;
+        height: 42px;
+        background-color: $sidebar-bg;
+        border: solid 2px $background-color;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
+    
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+
+        &__username {
+            display: block;
+            @media screen and (max-width : 455px) {
+                font-size: 12px;
+            }
+        }
+
+        &__date {
+            display: block;
+            align-self: center;
+            font-size: 12px;
+
+            @media screen and (max-width : 455px) {
+                font-size: 10px;
+            }
+        }
+    }
+
+    &__content {
+        margin-top: 12px;
+        color: $main-color;
+        word-wrap: break-word;
+    }
+}

@@ -1,0 +1,55 @@
+@import '../../../scss/variables';
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: $sidebar-bg;
+    color: $main-color;
+    padding: 34px 44px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 90%;
+    max-width: 655px;
+    z-index: 999;
+    border-radius: 12px;
+
+    input, textarea {
+        width: 100%;
+        background: #3C393F;
+        border-radius: 8px;
+        padding: 17px;
+        color: $main-color;
+        &::placeholder {
+            color: #828282;
+        }
+
+        &.hasError {
+            border: solid 1px #EB5757;
+        }
+    
+    }
+
+    .modal__submit {
+        width: fit-content;
+        align-self: end;
+        background-color: $cta-bg;
+        cursor: pointer;
+        padding: 15px 45px;
+    }
+
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgb(31, 30, 30);
+    opacity: 0.6;
+}
